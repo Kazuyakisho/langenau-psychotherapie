@@ -310,3 +310,8 @@ a:hover { color: var(--primary-d); }
   .about { grid-template-columns: 1fr; grid-template-areas: "photo" "text" "aside"; }
   .about-photo { position: static; max-width: 320px; }
 }
+
+/* Routenplaner-Link */
+.route-link { display: inline-flex; align-items: center; gap: .35em; }
+.route-link svg { flex: none; opacity: .8; transition: transform .15s ease; }
+.route-link:hover svg, .route-link:focus-visible svg { transform: translate(1px, -1px); }
