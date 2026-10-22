@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Logo Anna Langenau">
+  <defs>
+    <radialGradient id="g" cx="35%" cy="30%" r="80%">
+      <stop offset="0" stop-color="#3a6f67"/>
+      <stop offset="1" stop-color="#244a45"/>
+    </radialGradient>
+  </defs>
+  <circle cx="32" cy="32" r="30" fill="url(#g)"/>
+  <circle cx="32" cy="32" r="30" fill="none" stroke="#c19a6b" stroke-width="4" stroke-opacity="0.55"/>
+  <path d="M32 18c-7 6-11 11-11 18a11 11 0 0 0 22 0c0-7-4-12-11-18z" fill="#faf8f4" fill-opacity="0.92"/>
+</svg>
