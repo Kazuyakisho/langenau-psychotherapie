@@ -25,4 +25,22 @@
   // Jahr im Footer automatisch setzen.
   var year = document.getElementById("year");
   if (year) { year.textContent = new Date().getFullYear(); }
+
+  // Hell/Dunkel-Umschalter. Ohne gespeicherte Wahl folgt die Seite dem Betriebssystem.
+  var themeBtn = document.querySelector(".theme-toggle");
+  if (themeBtn) {
+    var root = document.documentElement;
+    var mql = window.matchMedia ? window.matchMedia("(prefers-color-scheme: dark)") : null;
+    function currentIsDark() {
+      var set = root.getAttribute("data-theme");
+      if (set === "dark") return true;
+      if (set === "light") return false;
+      return mql ? mql.matches : false;
+    }
+    themeBtn.addEventListener("click", function () {
+      var next = currentIsDark() ? "light" : "dark";
+      root.setAttribute("data-theme", next);
+      try { localStorage.setItem("theme", next); } catch (e) {}
+    });
+  }
 })();

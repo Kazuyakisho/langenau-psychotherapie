@@ -49,24 +49,43 @@
 
 ::selection { background: color-mix(in srgb, var(--primary) 26%, transparent); color: var(--ink); }
 
+/* Dunkel-Werte: automatisch nach OS-Vorgabe … */
 @media (prefers-color-scheme: dark) {
-  :root {
+  :root:not([data-theme="light"]) {
     --paper:    #1c1b16;
     --paper-2:  #24231c;
     --ink:      #ece7d8;
     --ink-soft: #b7b0a0;
-    --primary:  #b9b86a;   /* helleres Oliv für Kontrast auf dunkel */
+    --primary:  #b9b86a;
     --primary-d: #a9a85c;
     --primary-l: #c7c67d;
-    --accent:   #d08a6b;   /* warmes Terrakotta */
+    --accent:   #d08a6b;
     --line:     #38362b;
     --white:    #24231c;
     --shadow: 0 1px 2px rgba(0,0,0,.3), 0 10px 30px rgba(0,0,0,.4);
   }
-  /* Auf hellem Oliv (Dunkelmodus) dunkler Text für Kontrast. */
-  .btn-primary, .btn-primary:hover,
-  .site-nav .nav-cta, .site-nav .nav-cta:hover { color: #1c1b16; }
 }
+/* … und manuell per Umschalter erzwungen. */
+:root[data-theme="dark"] {
+  --paper:    #1c1b16;
+  --paper-2:  #24231c;
+  --ink:      #ece7d8;
+  --ink-soft: #b7b0a0;
+  --primary:  #b9b86a;
+  --primary-d: #a9a85c;
+  --primary-l: #c7c67d;
+  --accent:   #d08a6b;
+  --line:     #38362b;
+  --white:    #24231c;
+  --shadow: 0 1px 2px rgba(0,0,0,.3), 0 10px 30px rgba(0,0,0,.4);
+}
+/* Auf hellem Oliv (Dunkelmodus) dunkler Button-Text für Kontrast. */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .btn-primary,
+  :root:not([data-theme="light"]) .site-nav .nav-cta { color: #1c1b16; }
+}
+:root[data-theme="dark"] .btn-primary,
+:root[data-theme="dark"] .site-nav .nav-cta { color: #1c1b16; }
 
 * { box-sizing: border-box; }
 
@@ -139,6 +158,25 @@ a:hover { color: var(--primary-d); }
   background: var(--primary); color: #fff; margin-left: .3rem;
 }
 .site-nav .nav-cta:hover { background: var(--primary-d); color: #fff; }
+
+/* Hell/Dunkel-Umschalter */
+.theme-toggle {
+  display: inline-grid; place-items: center; width: 42px; height: 42px;
+  border: 1px solid var(--line); border-radius: 50%; background: var(--white);
+  color: var(--ink-soft); cursor: pointer; flex: none; transition: color .2s, border-color .2s, background .2s;
+}
+.theme-toggle:hover { color: var(--primary-d); border-color: color-mix(in srgb, var(--primary) 45%, var(--line)); }
+.theme-toggle svg { width: 20px; height: 20px; }
+.theme-toggle .icon-moon { display: none; }
+.theme-toggle .icon-sun { display: block; }
+/* Im Dunkelmodus Mond statt Sonne zeigen (auto + manuell). */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .theme-toggle .icon-sun { display: none; }
+  :root:not([data-theme="light"]) .theme-toggle .icon-moon { display: block; }
+}
+:root[data-theme="dark"] .theme-toggle .icon-sun { display: none; }
+:root[data-theme="dark"] .theme-toggle .icon-moon { display: block; }
+.header-right { display: flex; align-items: center; gap: 1rem; }
 
 .nav-toggle { display: none; background: none; border: 0; cursor: pointer; width: 44px; height: 44px; padding: 10px; }
 .nav-toggle span { display: block; height: 2px; background: var(--ink); border-radius: 2px; margin: 5px 0; transition: transform .25s, opacity .25s; }
