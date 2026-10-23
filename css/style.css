@@ -315,9 +315,10 @@ a:hover { color: var(--primary); }
     transition: transform .28s ease, visibility .28s ease; box-shadow: var(--shadow);
   }
   .site-nav.open { transform: translateY(0); visibility: visible; }
-  .site-nav ul { flex-direction: column; align-items: stretch; padding: .8rem 1.25rem 1.2rem; gap: .2rem; }
+  .site-nav ul { flex-direction: column; align-items: stretch; padding: .8rem 1.25rem 1.4rem; gap: .2rem; }
   .site-nav a { padding: .85rem 1rem; }
-  .site-nav .nav-cta { margin-left: 0; text-align: center; margin-top: .4rem; }
+  .site-nav ul li:last-child { margin-top: .7rem; padding-top: .9rem; border-top: 1px solid var(--line); }
+  .site-nav .nav-cta { margin-left: 0; text-align: center; }
   .hero-inner { grid-template-columns: 1fr; }
   .hero-media { order: -1; }
   .about { grid-template-columns: 1fr; grid-template-areas: "photo" "text" "aside"; }
